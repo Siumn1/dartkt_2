@@ -15,10 +15,7 @@ void main(List<String> arguments) async {
 
   for (var el in data.cars) {
     if (el.availability) {
-      String newString = el.price;
-      newString = newString.substring(1);
-
-      double price = double.parse(newString);
+      double price = double.parse(el.price.substring(1));
 
       if (minPrice > price) {
         minPrice = price;
