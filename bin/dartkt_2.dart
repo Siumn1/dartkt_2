@@ -10,18 +10,20 @@ void main(List<String> arguments) async {
   Response<dynamic> response = await client.get(url);
   CarResp data = CarResp.fromJson(response.data);
 
-  double minPrice = 10000;
+  double minPrice = double.maxFinite;
   int minId = -1;
 
   for (var el in data.cars) {
-    String newString = el.price;
-    newString = newString.substring(1);
+    if (el.availability) {
+      String newString = el.price;
+      newString = newString.substring(1);
 
-    double price = double.parse(newString);
+      double price = double.parse(newString);
 
-    if (minPrice > price) {
-      minPrice = price;
-      minId = el.id;
+      if (minPrice > price) {
+        minPrice = price;
+        minId = el.id;
+      }
     }
   }
   print(minId);

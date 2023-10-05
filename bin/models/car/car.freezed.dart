@@ -24,6 +24,7 @@ mixin _$Car {
   String get price => throw _privateConstructorUsedError;
   String get car => throw _privateConstructorUsedError;
   String get car_model => throw _privateConstructorUsedError;
+  bool get availability => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,8 @@ abstract class $CarCopyWith<$Res> {
   factory $CarCopyWith(Car value, $Res Function(Car) then) =
       _$CarCopyWithImpl<$Res, Car>;
   @useResult
-  $Res call({int id, String price, String car, String car_model});
+  $Res call(
+      {int id, String price, String car, String car_model, bool availability});
 }
 
 /// @nodoc
@@ -54,6 +56,7 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
     Object? price = null,
     Object? car = null,
     Object? car_model = null,
+    Object? availability = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -72,6 +75,10 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
           ? _value.car_model
           : car_model // ignore: cast_nullable_to_non_nullable
               as String,
+      availability: null == availability
+          ? _value.availability
+          : availability // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -82,7 +89,8 @@ abstract class _$$CarImplCopyWith<$Res> implements $CarCopyWith<$Res> {
       __$$CarImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String price, String car, String car_model});
+  $Res call(
+      {int id, String price, String car, String car_model, bool availability});
 }
 
 /// @nodoc
@@ -98,6 +106,7 @@ class __$$CarImplCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$CarImpl>
     Object? price = null,
     Object? car = null,
     Object? car_model = null,
+    Object? availability = null,
   }) {
     return _then(_$CarImpl(
       id: null == id
@@ -116,6 +125,10 @@ class __$$CarImplCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$CarImpl>
           ? _value.car_model
           : car_model // ignore: cast_nullable_to_non_nullable
               as String,
+      availability: null == availability
+          ? _value.availability
+          : availability // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -127,7 +140,8 @@ class _$CarImpl implements _Car {
       {required this.id,
       required this.price,
       required this.car,
-      required this.car_model});
+      required this.car_model,
+      required this.availability});
 
   factory _$CarImpl.fromJson(Map<String, dynamic> json) =>
       _$$CarImplFromJson(json);
@@ -140,10 +154,12 @@ class _$CarImpl implements _Car {
   final String car;
   @override
   final String car_model;
+  @override
+  final bool availability;
 
   @override
   String toString() {
-    return 'Car(id: $id, price: $price, car: $car, car_model: $car_model)';
+    return 'Car(id: $id, price: $price, car: $car, car_model: $car_model, availability: $availability)';
   }
 
   @override
@@ -155,12 +171,15 @@ class _$CarImpl implements _Car {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.car, car) || other.car == car) &&
             (identical(other.car_model, car_model) ||
-                other.car_model == car_model));
+                other.car_model == car_model) &&
+            (identical(other.availability, availability) ||
+                other.availability == availability));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, price, car, car_model);
+  int get hashCode =>
+      Object.hash(runtimeType, id, price, car, car_model, availability);
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +200,8 @@ abstract class _Car implements Car {
       {required final int id,
       required final String price,
       required final String car,
-      required final String car_model}) = _$CarImpl;
+      required final String car_model,
+      required final bool availability}) = _$CarImpl;
 
   factory _Car.fromJson(Map<String, dynamic> json) = _$CarImpl.fromJson;
 
@@ -193,6 +213,8 @@ abstract class _Car implements Car {
   String get car;
   @override
   String get car_model;
+  @override
+  bool get availability;
   @override
   @JsonKey(ignore: true)
   _$$CarImplCopyWith<_$CarImpl> get copyWith =>
