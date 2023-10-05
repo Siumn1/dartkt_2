@@ -11,7 +11,7 @@ void main(List<String> arguments) async {
   CarResp data = CarResp.fromJson(response.data);
 
   double minPrice = 10000;
-  int minId = 0;
+  int minId = -1;
 
   for (var el in data.cars) {
     String newString = el.price;
