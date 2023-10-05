@@ -10,14 +10,10 @@ void main(List<String> arguments) async {
   Response<dynamic> response = await client.get(url);
   CarResp data = CarResp.fromJson(response.data);
   //print(data.cars);
-
-  List<dynamic> myCars = [];
-  myCars = data.cars;
-
   double minPrice = 10000;
   int minId = 0;
 
-  for (var el in myCars) {
+  for (var el in data.cars) {
     //print(el.price);
     String newString = el.price;
     newString = newString.substring(1);
