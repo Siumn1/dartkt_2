@@ -9,12 +9,11 @@ void main(List<String> arguments) async {
   String url = 'https://myfakeapi.com/api/cars/';
   Response<dynamic> response = await client.get(url);
   CarResp data = CarResp.fromJson(response.data);
-  //print(data.cars);
+
   double minPrice = 10000;
   int minId = 0;
 
   for (var el in data.cars) {
-    //print(el.price);
     String newString = el.price;
     newString = newString.substring(1);
 
