@@ -11,16 +11,23 @@ void main(List<String> arguments) async {
   CarResp data = CarResp.fromJson(response.data);
   //print(data.cars);
 
-  double min_price = 1000.0;
-  int solution_id = 0;
+  List<dynamic> myCars = [];
+  myCars = data.cars;
 
-  for (var el in data.cars) {
-    String sub_string = el.price.substring(1);
-    if (min_price < (double.parse(sub_string))) {
-      min_price = double.parse(sub_string);
-      solution_id = el.id;
+  double minPrice = 10000;
+  int minId = 0;
+
+  for (var el in myCars) {
+    //print(el.price);
+    String newString = el.price;
+    newString = newString.substring(1);
+
+    double price = double.parse(newString);
+
+    if (minPrice > price) {
+      minPrice = price;
+      minId = el.id;
     }
   }
-  print(min_price);
-  print(solution_id);
+  print(minId);
 }
